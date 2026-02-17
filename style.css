@@ -3,7 +3,11 @@
   --secondary-color: #34495e;
   --bg-color: #f0f2f5;
   --text-color: #333;
+  --sub-text-color: #666;
   --card-bg: #fff;
+  --header-bg: #fafafa;
+  --row-bg: #f9f9f9;
+  --border-color: #eee;
   --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
   
@@ -13,6 +17,19 @@
   --ball-red: #ff7272;
   --ball-grey: #aaaaaa;
   --ball-green: #b0d840;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --sub-text-color: #aaa;
+  --card-bg: #1e1e1e;
+  --header-bg: #252525;
+  --row-bg: #2c2c2c;
+  --border-color: #333;
+  --secondary-color: #ecf0f1;
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.7);
 }
 
 * {
@@ -26,6 +43,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .app-container {
@@ -39,14 +57,43 @@ body {
   margin-bottom: 3rem;
 }
 
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--secondary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--secondary-color);
+  color: var(--bg-color);
+}
+
 .app-header h1 {
   font-size: 2.5rem;
   color: var(--secondary-color);
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .app-header p {
-  color: #666;
+  color: var(--sub-text-color);
 }
 
 .games-container {
@@ -60,7 +107,7 @@ body {
   border-radius: 16px;
   box-shadow: var(--shadow-light);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
   display: flex;
   flex-direction: column;
 }
@@ -72,11 +119,12 @@ body {
 
 .card-header {
   padding: 1.5rem;
-  background: #fafafa;
-  border-bottom: 1px solid #eee;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.3s;
 }
 
 .card-header h2 {
@@ -103,7 +151,7 @@ body {
 }
 
 .description {
-  color: #777;
+  color: var(--sub-text-color);
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
@@ -117,7 +165,7 @@ body {
 
 .placeholder-text {
   text-align: center;
-  color: #ccc;
+  color: #ccc; /* Keep light gray for placeholder */
   margin-top: 3rem;
 }
 
@@ -127,9 +175,10 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  background: #f9f9f9;
+  background: var(--row-bg);
   border-radius: 8px;
   animation: fadeIn 0.5s ease-out;
+  transition: background-color 0.3s;
 }
 
 .ball {
@@ -162,14 +211,15 @@ body {
 
 .card-footer {
   padding: 1.5rem;
-  background: #fafafa;
-  border-top: 1px solid #eee;
+  background: var(--header-bg);
+  border-top: 1px solid var(--border-color);
   text-align: center;
+  transition: background-color 0.3s;
 }
 
 .generate-btn {
   background: var(--secondary-color);
-  color: white;
+  color: var(--card-bg); /* Use card bg for text color inversion */
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
@@ -177,14 +227,16 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   width: 100%;
+  font-weight: 600;
 }
 
 .generate-btn.primary:hover {
-  background: #2c3e50;
+  opacity: 0.9;
 }
 
 .generate-btn.secondary {
   background: var(--ball-blue);
+  color: white;
 }
 
 .generate-btn.secondary:hover {

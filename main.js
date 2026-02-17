@@ -3,6 +3,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const pensionBtn = document.getElementById('pension-btn');
   const lottoResults = document.getElementById('lotto-results');
   const pensionResults = document.getElementById('pension-results');
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeIcon = themeToggleBtn.querySelector('.icon');
+
+  // Theme Logic
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    document.body.classList.add('dark-mode');
+    themeIcon.textContent = '☀️';
+  }
+
+  themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
 
   // Lotto 6/45 Generator
   lottoBtn.addEventListener('click', () => {
@@ -62,11 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Color Logic
     if (isPension) {
-      // Pension lottery uses different logic or just random colors?
-      // Real pension lottery balls have specific colors per position, but for simplicity
-      // let's reuse the lotto colors based on number value 0-9 for variety
-      // Or we can just cycle through colors.
-      // Let's use the standard lotto colors for consistency based on the number.
       if (number <= 1) ball.classList.add('yellow'); // 0, 1
       else if (number <= 3) ball.classList.add('blue'); // 2, 3
       else if (number <= 5) ball.classList.add('red'); // 4, 5
