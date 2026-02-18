@@ -1,0 +1,39 @@
+{
+  "lastWeekWinningNumbers": [7, 13, 21, 25, 33, 42],
+  "modelsPerformance": [
+    {
+      "rank": 1,
+      "modelName": "라이트 (LightGBM)",
+      "predictedNumbers": [7, 15, 21, 28, 33, 45],
+      "matchCount": 3
+    },
+    {
+      "rank": 2,
+      "modelName": "XGB (XGBoost)",
+      "predictedNumbers": [8, 13, 22, 25, 34, 41],
+      "matchCount": 2
+    },
+    {
+      "rank": 3,
+      "modelName": "루나 (LSTM)",
+      "predictedNumbers": [5, 11, 21, 30, 38, 42],
+      "matchCount": 2
+    },
+    {
+      "rank": 4,
+      "modelName": "SVM (Support Vector Machine)",
+      "predictedNumbers": [1, 9, 18, 25, 36, 44],
+      "matchCount": 1
+    },
+    {
+      "rank": 5,
+      "modelName": "로기 (LogReg)",
+      "predictedNumbers": [3, 10, 19, 27, 35, 43],
+      "matchCount": 0
+    }
+  ],
+  "hallOfFame": {
+    "modelName": "라이트 (LightGBM)",
+    "achievement": "3주 연속 1위 달성"
+  }
+}

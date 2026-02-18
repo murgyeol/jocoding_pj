@@ -47,7 +47,23 @@
 
       <section id="generator" class="app-section">
         <h2>3가지 게임 모드 선택</h2>
-        <!-- 럭키 박스, 금고 해킹, 타로 카드 모드가 여기에 들어갑니다. -->
+        <div class="game-modes-grid">
+          <div class="game-mode-card">
+            <div class="game-mode-icon">🎁</div>
+            <h3>럭키 박스</h3>
+            <p>AI가 추천하는 조합을 즉시 확인해보세요.</p>
+          </div>
+          <div class="game-mode-card">
+            <div class="game-mode-icon">🔒</div>
+            <h3>금고 해킹</h3>
+            <p>원하는 번호를 잠그고 나머지 번호를 AI에게 맡겨보세요.</p>
+          </div>
+          <div class="game-mode-card">
+            <div class="game-mode-icon">🎴</div>
+            <h3>타로 카드</h3>
+            <p>AI 위원회 카드를 선택하여 모델별 조합을 얻어보세요.</p>
+          </div>
+        </div>
       </section>
 
       <section id="insight" class="app-section">
@@ -57,12 +73,41 @@
 
       <section id="league" class="app-section">
         <h2>모델별 전주 성적 및 명예의 전당</h2>
-        <!-- 모델별 성적 표가 여기에 들어갑니다. -->
+        <div class="hall-of-fame">
+          <h3>🏆 명예의 전당 🏆</h3>
+          <p id="hof-details"><!-- 명예의 전당 내용 --></p>
+        </div>
+        <div class="league-table-container">
+            <table class="league-table">
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>모델명</th>
+                        <th>예측 번호</th>
+                        <th>적중</th>
+                    </tr>
+                </thead>
+                <tbody id="league-table-body">
+                    <!-- 모델별 성적 내용 -->
+                </tbody>
+            </table>
+        </div>
       </section>
       
       <section id="annuity" class="app-section">
         <h2>로기(거북이)의 연금복권 최적화 조합</h2>
-        <!-- 연금복권 조합 생성기가 여기에 들어갑니다. -->
+        <div class="annuity-generator">
+            <div class="annuity-character">
+                <img src="/images/logi.png" alt="로기 (거북이)">
+                <p>"느리지만, 꾸준하게! 연금처럼!"</p>
+            </div>
+            <div class="annuity-result-area">
+                <div id="annuity-numbers" class="annuity-numbers-placeholder">
+                    버튼을 눌러 조합을 확인하세요
+                </div>
+                <button id="generate-annuity-btn" class="action-button">조합 생성하기</button>
+            </div>
+        </div>
       </section>
     </main>
 

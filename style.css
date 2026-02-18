@@ -82,7 +82,32 @@ body {
   text-shadow: 0 0 10px var(--color-secondary);
 }
 
-/* Hero Section - Character Grid */
+.error-message {
+  color: #ff7272;
+  text-align: center;
+  padding: 2rem;
+}
+
+.action-button {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-text);
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+}
+
+.action-button:hover, .action-button:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(37, 117, 252, 0.5);
+    outline: none;
+}
+
+/* Hero Section */
 .character-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -98,6 +123,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 100%;
 }
 
 .character-card:hover {
@@ -121,13 +147,193 @@ body {
   color: var(--color-accent);
 }
 
+/* Generator Section */
+.game-modes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
 
+.game-mode-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: var(--shadow-lifted);
+}
+
+.game-mode-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(106, 28, 203, 0.4);
+}
+
+.game-mode-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  background: linear-gradient(45deg, var(--color-accent), #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(251, 199, 212, 0.5);
+}
+
+.game-mode-card h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.game-mode-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Insight Section */
 #insight-chart {
   max-width: 100%;
-  height: 500px; /* Set a specific height */
+  height: 500px;
   background: rgba(0,0,0,0.2);
   border-radius: 10px;
   padding: 1rem;
+}
+
+/* League Section */
+.hall-of-fame {
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 30px rgba(37, 117, 252, 0.4);
+}
+
+.hall-of-fame h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hall-of-fame p {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.league-table-container {
+  overflow-x: auto;
+}
+
+.league-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.league-table th, .league-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.league-table thead {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.league-table th {
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 1rem;
+}
+
+.league-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.league-table tbody tr:first-child {
+    background: linear-gradient(90deg, rgba(251, 199, 212, 0.15) 0%, rgba(37, 117, 252, 0.15) 100%);
+    font-weight: bold;
+}
+
+.matched-number {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  margin: 0 0.2em;
+  background-color: var(--color-accent);
+  color: var(--color-bg-dark);
+  border-radius: 5px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Annuity Section */
+.annuity-generator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.annuity-character {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.annuity-character img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #8BC6EC, #9599E2);
+    padding: 6px;
+    box-shadow: 0 0 25px rgba(139, 198, 236, 0.6);
+    margin-bottom: 1rem;
+}
+
+.annuity-character p {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.annuity-result-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+#annuity-numbers {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem 2.5rem;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 0.5rem;
+    min-width: 400px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s;
+}
+
+.annuity-numbers-placeholder {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    letter-spacing: normal !important;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.annuity-digit-group {
+    display: inline-block;
+    margin-right: 1.5rem;
+}
+
+.annuity-digit-group:last-child {
+    margin-right: 0;
 }
 
 .app-footer {
@@ -152,4 +358,16 @@ body {
     width: 100px;
     height: 100px;
   }
+
+  .game-modes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .league-table th, .league-table td {
+    padding: 0.8rem 1rem;
+  }
+  
+  .annuity-generator { flex-direction: column; gap: 2rem; }
+  #annuity-numbers { font-size: 1.8rem; min-width: auto; padding: 1rem 1.5rem; letter-spacing: 0.3rem; }
 }
