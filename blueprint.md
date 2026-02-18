@@ -1,29 +1,53 @@
-# Project Blueprint: Lucky Number Generator
+# Lotto Studio 작업 계획서
 
-## Overview
-A simple, modern web application designed to generate lucky numbers for South Korea's two most popular lottery games: **Lotto 6/45** and **Pension Lottery 720+** (Yeon-geum Bok-gwon). The app provides users with 5 sets of random numbers for each game upon request, presented in a visually appealing, responsive interface.
+## 📋 프로젝트 개요: "Lotto Studio Open Lab"
 
-## Current Plan: Initial Implementation
+- **슬로건:** "AI가 설계한 27,132개의 한정판 행운."
+- **목표:** 5개 앙상블 모델 기반의 정제된 번호 제공 및 게임화된 사용자 경험(UX) 구축.
+- **핵심 지표:** 페이지 체류 시간, 재방문율(League 확인), 조합 소진율.
 
-### Objectives
-1.  **Lotto 6/45 Generation**: Generate 5 combinations of 6 unique numbers (1-45).
-2.  **Pension Lottery 720+ Generation**: Generate 5 combinations consisting of 1 Group (1-5) and 6 Digits (0-9).
-3.  **User Interface**:
-    *   Clean, modern design using cards and shadows.
-    *   Responsive layout for mobile and desktop.
-    *   Visual representation of lottery balls with correct color coding (Yellow, Blue, Red, Grey, Green).
+---
 
-### Technical Details
-*   **HTML**: Semantic structure with sections for each game type.
-*   **CSS**:
-    *   Flexbox/Grid for layout.
-    *   CSS Variables for theming and ball colors.
-    *   Animations for number reveal.
-*   **JavaScript**:
-    *   `Math.random()` for number generation.
-    *   DOM manipulation to render results dynamically.
+## 🛠️ Phase 1: 코어 엔진 및 데이터 (The Brain)
 
-### Steps
-1.  **Update `index.html`**: Create the structure with headers, buttons, and result containers.
-2.  **Update `style.css`**: Implement the visual style, including ball colors and layout.
-3.  **Update `main.js`**: Implement the number generation logic and event handling.
+로직이 변경되어도 프론트엔드에 영향을 주지 않도록 **모듈화**합니다.
+
+| **작업 항목** | **세부 내용** | **개선 포인트 (Scalability)** |
+| --- | --- | --- |
+| **ML/DL 앙상블** | LSTM, LightGBM, LogReg, SVM, XGBoost 예측 로직 고도화 | 새로운 모델(예: Transformer) 추가 시 즉시 확장 가능하도록 설계 |
+| **조합 생성기** | 19개 후보군 기반 $19C6$ (27,132개) 조합 생성 및 DB 저장 | 후보 번호 개수가 변동되어도 자동으로 전체 조합을 재계산하도록 자동화 |
+| **성적 집계 (League)** | 매주 당첨 번호 발표 후 모델별 적중률 자동 계산 시스템 | 과거 모든 회차의 데이터를 누적하여 'AI 모델 성장 그래프' 시각화 준비 |
+
+---
+
+## 🎨 Phase 2: 비주얼 및 게임 인터페이스 (The Body)
+
+사용자의 시각적 즐거움과 '희귀성'을 체감하게 만드는 단계입니다.
+
+- **캐릭터 애셋 관리:** 픽사 스타일 3D 동물 캐릭터(루나, 라이트 등)를 배경 없는 투명 PNG/WebP로 관리하여 웹페이지 어디든 배치 가능하게 함.
+- **3대 게임 모드 구현:**
+  1. **럭키 박스:** "XXXX번째 한정판 티켓" 메시지와 연동된 개봉 애니메이션.
+  2. **금고 해킹:** 특정 숫자 'Lock' 기능이 포함된 다이얼 인터랙션.
+  3. **타로 카드:** 모델별 특성이 담긴 카드 뒷면 디자인 및 뒤집기 효과.
+- **실시간 카운터:** Redis 등을 활용해 27,132개 중 남은 수량을 실시간으로 동기화하여 긴박감 조성.
+
+---
+
+## 📊 Phase 3: 1페이지 레이아웃 배치 (The Soul)
+
+사용자의 스크롤 흐름에 맞춘 단일 페이지 구성입니다.
+
+1.  **[Hero]** 실시간 카운터 + 5인의 AI 위원회 캐릭터 그리팅.
+2.  **[Generator]** 3가지 게임 모드 선택 및 번호 생성 섹션.
+3.  **[Insight]** 19개 후보 번호 득표수 **확률 히트맵** (D3.js 혹은 Chart.js 활용).
+4.  **[League]** 모델별 전주 성적 및 명예의 전당 (신뢰도 검증 섹션).
+5.  **[Annuity]** 하단 'Special Section'으로 연금복권 최적화 조합 노출.
+
+---
+
+## 💡 연금복권 전략 및 배치 판단
+
+- **통합 배치 수용:** 연금복권은 별도 메뉴가 아닌 **메인 페이지 하단(Footer 직전)**에 '전략적 보너스 섹션'으로 포함합니다.
+- **전략 차별화:** 로또가 '5인 앙상블' 위주라면, 연금복권은 **"로기(거북이)의 확률 최적화 - 끝자리 중복 제거"**라는 단독 테마를 부여하여 전문성을 강조합니다.
+
+---

@@ -1,35 +1,23 @@
 :root {
-  --primary-color: #f79f1f;
-  --secondary-color: #34495e;
-  --bg-color: #f0f2f5;
-  --text-color: #333;
-  --sub-text-color: #666;
-  --card-bg: #fff;
-  --header-bg: #fafafa;
-  --row-bg: #f9f9f9;
-  --border-color: #eee;
-  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
-  
-  /* Lottery Ball Colors */
-  --ball-yellow: #fbc400;
-  --ball-blue: #69c8f2;
-  --ball-red: #ff7272;
-  --ball-grey: #aaaaaa;
-  --ball-green: #b0d840;
-}
+  --color-primary: #6a11cb;
+  --color-secondary: #2575fc;
+  --color-accent: #fbc7d4;
+  --color-text: #ffffff;
+  --color-text-dark: #2c3e50;
+  --color-bg-dark: #1a1a2e;
+  --color-bg-light: #e0e0e0;
+  --font-family-main: 'Pretendard', sans-serif;
+  --noise-texture: url('data:image/svg+xml,...'); /* Placeholder */
 
-body.dark-mode {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --sub-text-color: #aaa;
-  --card-bg: #1e1e1e;
-  --header-bg: #252525;
-  --row-bg: #2c2c2c;
-  --border-color: #333;
-  --secondary-color: #ecf0f1;
-  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.5);
-  --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.7);
+  /* Shadows */
+  --shadow-deep: 
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+  --shadow-lifted: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 * {
@@ -38,235 +26,130 @@ body.dark-mode {
   padding: 0;
 }
 
-body {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  transition: background-color 0.3s, color 0.3s;
+html {
+  scroll-behavior: smooth;
 }
 
-.app-container {
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text);
+  background-image: var(--noise-texture);
+  line-height: 1.6;
+}
+
+#app {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 2rem;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 3rem;
+  padding: 6rem 0 4rem;
 }
 
-.header-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+.app-header .logo {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
-  position: relative;
 }
 
-.theme-toggle {
-  background: none;
-  border: 2px solid var(--secondary-color);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  background-color: var(--secondary-color);
-  color: var(--bg-color);
-}
-
-.app-header h1 {
-  font-size: 2.5rem;
-  color: var(--secondary-color);
-  margin: 0;
-}
-
-.app-header p {
-  color: var(--sub-text-color);
-}
-
-.games-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.game-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  box-shadow: var(--shadow-light);
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
-  display: flex;
-  flex-direction: column;
-}
-
-.game-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-.card-header {
-  padding: 1.5rem;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background-color 0.3s;
-}
-
-.card-header h2 {
+.app-header .subtitle {
   font-size: 1.25rem;
-  color: var(--secondary-color);
+  color: var(--color-accent);
+  font-weight: 400;
 }
 
-.badge {
-  background: var(--primary-color);
-  color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 99px;
-  font-size: 0.75rem;
-  font-weight: 600;
+.app-section {
+  padding: 5rem 2rem;
+  margin-bottom: 4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lifted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.badge.pension-badge {
-  background: var(--ball-blue);
-}
-
-.card-body {
-  padding: 1.5rem;
-  flex-grow: 1;
-}
-
-.description {
-  color: var(--sub-text-color);
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.results-container {
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.placeholder-text {
+.app-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
   text-align: center;
-  color: #ccc; /* Keep light gray for placeholder */
-  margin-top: 3rem;
+  color: var(--color-text);
+  text-shadow: 0 0 10px var(--color-secondary);
 }
 
-.lotto-row, .pension-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  background: var(--row-bg);
-  border-radius: 8px;
-  animation: fadeIn 0.5s ease-out;
-  transition: background-color 0.3s;
+/* Hero Section - Character Grid */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  justify-items: center;
 }
 
-.ball {
-  width: 36px;
-  height: 36px;
+.character-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.character-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(37, 117, 252, 0.3);
+}
+
+.character-card img {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
-  font-size: 0.9rem;
-  box-shadow: inset -2px -2px 5px rgba(0,0,0,0.1);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+  padding: 5px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(37, 117, 252, 0.5);
 }
 
-/* Ball Colors Logic */
-.ball.yellow { background-color: var(--ball-yellow); color: #333; text-shadow: none; }
-.ball.blue { background-color: var(--ball-blue); }
-.ball.red { background-color: var(--ball-red); }
-.ball.grey { background-color: var(--ball-grey); }
-.ball.green { background-color: var(--ball-green); }
-
-.pension-group {
-  font-weight: bold;
-  margin-right: 0.5rem;
-  color: var(--secondary-color);
+.character-card p {
+  font-weight: 700;
+  color: var(--color-accent);
 }
 
-.card-footer {
-  padding: 1.5rem;
-  background: var(--header-bg);
-  border-top: 1px solid var(--border-color);
-  text-align: center;
-  transition: background-color 0.3s;
-}
 
-.generate-btn {
-  background: var(--secondary-color);
-  color: var(--card-bg); /* Use card bg for text color inversion */
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-  width: 100%;
-  font-weight: 600;
-}
-
-.generate-btn.primary:hover {
-  opacity: 0.9;
-}
-
-.generate-btn.secondary {
-  background: var(--ball-blue);
-  color: white;
-}
-
-.generate-btn.secondary:hover {
-  background: #5dbce8;
+#insight-chart {
+  max-width: 100%;
+  height: 500px; /* Set a specific height */
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 1rem;
 }
 
 .app-footer {
   text-align: center;
-  margin-top: 3rem;
-  color: #999;
-  font-size: 0.8rem;
+  padding: 3rem 0;
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-light);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@media (max-width: 768px) {
+  #app { padding: 0 1rem; }
+  .app-header { padding: 4rem 0 3rem; }
+  .app-header .logo { font-size: 3rem; }
+  .app-header .subtitle { font-size: 1rem; }
+  .app-section { padding: 3rem 1.5rem; }
+  .app-section h2 { font-size: 2rem; }
 
-@media (max-width: 600px) {
-  .app-header h1 {
-    font-size: 2rem;
-  }
-  
-  .lotto-row, .pension-row {
-    gap: 0.25rem;
-  }
-  
-  .ball {
-    width: 30px;
-    height: 30px;
-    font-size: 0.8rem;
+  .character-card img {
+    width: 100px;
+    height: 100px;
   }
 }

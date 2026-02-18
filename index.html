@@ -3,63 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>행운의 로또 번호 생성기</title>
+  <title>Lotto Studio Open Lab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href='/style.css' rel='stylesheet'>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer type="module" src="/main.js"></script>
 </head>
 <body>
-  <div class="app-container">
+  <div id="app">
     <header class="app-header">
-      <div class="header-content">
-        <h1>💰 행운의 로또 번호 생성기</h1>
-        <button id="theme-toggle" class="theme-toggle" aria-label="다크 모드 전환">
-          <span class="icon">🌙</span>
-        </button>
-      </div>
-      <p>오늘의 행운을 믿어보세요! 아래 버튼을 눌러 번호를 생성하세요.</p>
+      <h1 class="logo">Lotto Studio</h1>
+      <p class="subtitle">AI가 설계한 27,132개의 한정판 행운</p>
     </header>
 
-    <main class="games-container">
-      <!-- Lotto 6/45 Section -->
-      <section class="game-card lotto-card">
-        <div class="card-header">
-          <h2>로또 6/45</h2>
-          <span class="badge">매주 토요일 추첨</span>
-        </div>
-        <div class="card-body">
-          <p class="description">1부터 45까지의 숫자 중 6개를 선택합니다.</p>
-          <div id="lotto-results" class="results-container">
-            <div class="placeholder-text">아직 생성된 번호가 없습니다.</div>
+    <main>
+      <section id="hero" class="app-section">
+        <h2>AI 위원회 소개</h2>
+        <div class="character-grid">
+          <div class="character-card">
+            <img src="/images/luna.png" alt="루나 (LSTM)">
+            <p>루나 (LSTM)</p>
           </div>
-        </div>
-        <div class="card-footer">
-          <button id="lotto-btn" class="generate-btn primary">번호 5세트 생성하기</button>
+          <div class="character-card">
+            <img src="/images/light.png" alt="라이트 (LightGBM)">
+            <p>라이트 (LightGBM)</p>
+          </div>
+          <div class="character-card">
+            <img src="/images/logi.png" alt="로기 (Logistic Regression)">
+            <p>로기 (LogReg)</p>
+          </div>
+          <div class="character-card">
+            <img src="/images/svm.png" alt="SVM (Support Vector Machine)">
+            <p>SVM</p>
+          </div>
+          <div class="character-card">
+            <img src="/images/xgb.png" alt="XGB (XGBoost)">
+            <p>XGB</p>
+          </div>
         </div>
       </section>
 
-      <!-- Pension Lottery 720+ Section -->
-      <section class="game-card pension-card">
-        <div class="card-header">
-          <h2>연금복권 720+</h2>
-          <span class="badge pension-badge">매주 목요일 추첨</span>
-        </div>
-        <div class="card-body">
-          <p class="description">조(1~5)와 6자리 번호(0~9)를 선택합니다.</p>
-          <div id="pension-results" class="results-container">
-            <div class="placeholder-text">아직 생성된 번호가 없습니다.</div>
-          </div>
-        </div>
-        <div class="card-footer">
-          <button id="pension-btn" class="generate-btn secondary">번호 5세트 생성하기</button>
-        </div>
+      <section id="generator" class="app-section">
+        <h2>3가지 게임 모드 선택</h2>
+        <!-- 럭키 박스, 금고 해킹, 타로 카드 모드가 여기에 들어갑니다. -->
+      </section>
+
+      <section id="insight" class="app-section">
+        <h2>19개 후보 번호 득표수 확률 히트맵</h2>
+        <canvas id="insight-chart"></canvas>
+      </section>
+
+      <section id="league" class="app-section">
+        <h2>모델별 전주 성적 및 명예의 전당</h2>
+        <!-- 모델별 성적 표가 여기에 들어갑니다. -->
+      </section>
+      
+      <section id="annuity" class="app-section">
+        <h2>로기(거북이)의 연금복권 최적화 조합</h2>
+        <!-- 연금복권 조합 생성기가 여기에 들어갑니다. -->
       </section>
     </main>
-    
+
     <footer class="app-footer">
-      <p>※ 생성된 번호는 무작위이며 당첨을 보장하지 않습니다. 재미로만 즐겨주세요!</p>
+      <p>&copy; 2024 Lotto Studio. 모든 권리 보유.</p>
     </footer>
   </div>
 </body>
