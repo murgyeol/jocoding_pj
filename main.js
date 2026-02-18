@@ -1,17 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // Insight Chart Rendering
-  try {
-    const response = await fetch('/combined_priority_numbers.txt');
-    if (!response.ok) throw new Error('데이터 파일을 불러오는 데 실패했습니다.');
-    const textData = await response.text();
-    const labels = textData.split(',').map(n => n.trim()).sort((a, b) => parseInt(a) - parseInt(b));
-    const data = labels.map(() => Math.floor(Math.random() * 5) + 1);
-    renderInsightChart(labels, data);
-  } catch (error) {
-    console.error('차트 렌더링 오류:', error);
-    document.getElementById('insight-chart').outerHTML = '<p class="error-message">차트를 불러올 수 없습니다.</p>';
-  }
-
   // Game Mode Selection Logic
   const gameModeCards = document.querySelectorAll('.game-mode-card');
   gameModeCards.forEach(card => {
@@ -39,18 +26,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     displayAnnuityNumbers(annuityNumbers);
   });
 });
-
-function renderInsightChart(labels, data) {
-  const ctx = document.getElementById('insight-chart').getContext('2d');
-  const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.clientHeight);
-  gradient.addColorStop(0, 'rgba(37, 117, 252, 0.8)');
-  gradient.addColorStop(1, 'rgba(106, 17, 203, 0.8)');
-
-  new Chart(ctx, {
-    type: 'bar', data: { labels, datasets: [{ label: '득표수', data, backgroundColor: gradient, borderColor: 'rgba(255,255,255,0.2)', borderWidth: 1, borderRadius: 8 }] },
-    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#e0e0e0' }, grid: { color: 'rgba(255,255,255,0.1)' } }, y: { ticks: { color: '#e0e0e0', font: { weight: 'bold' } }, grid: { display: false } } } }
-  });
-}
 
 function renderLeagueSection(data) {
   const hofDetails = document.getElementById('hof-details');
